@@ -1,0 +1,10 @@
+# Lower rank number = better team
+df['Rank Ratio'] = df['Away Team FIFA Rank'] / df['Home Team FIFA Rank']
+# >1 means home team is ranked better, <1 means away team is better
+df['Squad Value Ratio'] = df['Home Team Squad Value (€M)'] / df['Away Team Squad Value (€M)']
+df['H2H Total'] = df['Head to Head Home Team Win'] + df['Head to Head Away Team Win']
+df['H2H Home Win Rate'] = df['Head to Head Home Team Win'] / (df['H2H Total'] + 1)  # +1 avoids div/0
+df['H2H Away Win Rate'] = df['Head to Head Away Team Win'] / (df['H2H Total'] + 1)
+df['H2H Total'] = df['Head to Head Home Team Win'] + df['Head to Head Away Team Win']
+df['H2H Home Win Rate'] = df['Head to Head Home Team Win'] / (df['H2H Total'] + 1)  # +1 avoids div/0
+df['H2H Away Win Rate'] = df['Head to Head Away Team Win'] / (df['H2H Total'] + 1)
