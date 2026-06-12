@@ -8,7 +8,7 @@ The project applies robust statistical testing for feature selection, implements
 
 ## 📊 Project Workflow Overview
 
-The predictive pipeline is built in `preprocessing.ipynb` and follows a standard structured machine learning workflow:
+The predictive pipeline is built in `Notebook/preprocessing.ipynb` and follows a standard structured machine learning workflow:
 
 ```mermaid
 graph TD
@@ -115,18 +115,34 @@ $$\begin{pmatrix}
 ## 📁 Project Structure
 
 ```
-├── preprocessing.ipynb       # Data preprocessing, EDA, statistical testing, and model pipeline
-├── untitlred                 # Scratch pad with experimental feature formulas
+├── Dataset/
+│   └── dataset.csv           # Historical FIFA World Cup match data with engineered features
+├── Model/
+│   └── fifa_pred_model.pkl   # Trained Bagging XGBoost Ensemble model (saved classifier)
+├── Notebook/
+│   └── preprocessing.ipynb   # Jupyter Notebook for preprocessing, EDA, statistical testing, and model training
 └── README.md                 # Project documentation (this file)
 ```
 
 ## 🚀 Getting Started
 
 ### Prerequisites
-Install the required packages:
+Install the required packages (including `joblib` to load the trained model):
 ```bash
-pip install numpy pandas scikit-learn xgboost imbalanced-learn matplotlib seaborn
+pip install numpy pandas scikit-learn xgboost imbalanced-learn matplotlib seaborn joblib
 ```
 
 ### Run the Analysis
-Open `preprocessing.ipynb` in your Jupyter environment and run the cells sequentially to reproduce the preprocessing, feature engineering, and model evaluation steps.
+Open `Notebook/preprocessing.ipynb` in your Jupyter environment and run the cells sequentially to reproduce the preprocessing, feature engineering, and model training steps.
+
+### Load and Use the Trained Model
+The trained ensemble model is saved in the `Model/` directory. You can load it in Python using `joblib` to make predictions:
+```python
+import joblib
+
+# Load the trained model
+model = joblib.load("Model/fifa_pred_model.pkl")
+
+# Predict match outcomes (0 = Draw, 1 = Away Team Win, 2 = Home Team Win)
+# predictions = model.predict(new_features)
+```
